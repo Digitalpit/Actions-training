@@ -2,16 +2,30 @@ name: learn-github-actions
 run-name: ${{ github.actor }} is learning GitHub Actions
 on: [push]
 jobs:
-  check-bats-version:
+  list-files-and-save-results:
     runs-on: ubuntu-latest
     env:
       TEXT: "text to display"
     steps:
       - uses: actions/checkout@v3
-      - uses: actions/setup-node@v3
+      - name: display tree
+        run: tree
+      - name: display text
+        run: echo ${{ env.TEXT }} > tree_output.log
+      - name: Upload tree output file
+        uses: actions/upload-artifact@v3
         with:
-          node-version: '14'
-      - run: npm install -g bats
-      - run: bats -v
-      - run: tree
-      - run: echo ${{ env.TEXT }}
+          name: output-log-file
+          path: tree_output.log
+          
+  download-file-and-display:
+    runs-on: ubuntu-latest
+    needs: list-files-and-save-results
+    steps:
+      - name: Download a single artifact
+        uses: actions/download-artifact@v3
+        with:
+          name: output-log-file
+      - name: list files
+        run: tree
+  
