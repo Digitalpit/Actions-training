@@ -4,6 +4,8 @@ on: [push]
 jobs:
   check-bats-version:
     runs-on: ubuntu-latest
+    env:
+      TEXT: "text to display"
     steps:
       - uses: actions/checkout@v3
       - uses: actions/setup-node@v3
@@ -12,3 +14,4 @@ jobs:
       - run: npm install -g bats
       - run: bats -v
       - run: tree
+      - run: echo ${{ env.TEXT }}
