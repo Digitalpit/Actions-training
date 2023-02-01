@@ -28,4 +28,6 @@ jobs:
           name: output-log-file
       - name: list files
         run: tree
+      - name: display file content
+        run: cat tree_output.log
   
