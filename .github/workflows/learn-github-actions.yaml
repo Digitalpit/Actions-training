@@ -6,7 +6,7 @@ jobs:
     runs-on: ubuntu-latest
     env:
       TEXT1: "text to display"
-      TEXT2: "conditional text"
+      TEXT2: "some text"
     steps:
       - uses: actions/checkout@v3
       - name: display tree
