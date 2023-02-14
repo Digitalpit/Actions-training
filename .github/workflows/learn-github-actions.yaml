@@ -6,7 +6,7 @@ jobs:
     runs-on: ubuntu-latest
     env:
       TEXT1: "text to display"
-      TEXT2: ${{ "some text" }}
+      TEXT2: "some text"
     steps:
       - uses: actions/checkout@v3
       - name: display tree
@@ -33,7 +33,7 @@ jobs:
       - name: list files
         run: tree
       - name: display file content
-        run: cat tree_output.log
+        run: cat /tmp/tree_output.log
       - name: The job has succeeded
         run: echo '--- SUCCESS ---'
         if: ${{ success() }}
