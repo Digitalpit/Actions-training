@@ -6,7 +6,7 @@ jobs:
     runs-on: ubuntu-latest
     env:
       TEXT1: "text to display"
-      TEXT2: "some text"
+      TEXT2: ${{ "some text" }}
     steps:
       - uses: actions/checkout@v3
       - name: display tree
@@ -38,6 +38,6 @@ jobs:
         run: echo '--- SUCCESS ---'
         if: ${{ success() }}
       - name: The job has failed
-        run: echo '--- FAILER ---'
+        run: echo '--- FAILED ---'
         if: ${{ failure() }}
   
