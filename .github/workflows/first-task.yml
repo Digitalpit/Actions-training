@@ -17,5 +17,7 @@ jobs:
         run: echo "name of the event that triggered the workflow $github.event_name"
       - name: name-of-the-branch
         run: echo "name of the branch $github.ref"
+      - name: Checkout
+        uses: actions/checkout@v3.3.0
       - name: list-files
         run: tree
