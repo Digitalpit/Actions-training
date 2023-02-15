@@ -1,0 +1,21 @@
+name: My first workflow
+on: 
+  push:
+    branches:
+      - 'main'
+  pull_request:
+    branches: 
+      - 'main'
+  workflow_dispatch:
+  schedule:
+    - cron: '15 6 * * 0'
+jobs:
+  Build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: name-of-the-event
+        run: echo "name of the event that triggered the workflow $github.event_name"
+      - name: name-of-the-branch
+        run: echo "name of the branch $github.ref"
+      - name: list-files
+        run: tree
